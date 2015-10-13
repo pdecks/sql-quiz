@@ -270,3 +270,82 @@ Write a query that fetches the id of the customer whose email is
 
 
 SELECT id FROM customers WHERE email = 'phyllis@demizz.edu';
+
+
+==========
+20
+
+-----
+
+Write a query that shows the id, status and order_total for all orders 
+made by customer 100.
+
+-----
+
+
+SELECT id, status, order_total FROM orders WHERE customer_id = 100;
+
+
+==========
+21
+
+-----
+
+Write a single query that shows the id, status, and order total for all
+orders made by 'phyllis@demizz.edu'. Use a subselect to do this.
+
+
+-----
+
+
+SELECT Orders.id, Orders.status, Orders.order_total
+FROM Orders
+JOIN Customers ON (Customers.id = Orders.customer_id)
+WHERE Customers.email = 'phyllis@demizz.edu';
+
+
+==========
+22
+
+-----
+
+Write a query that shows the id, status, and order total for all orders
+made by 'phyllis@demizz.edu'. Use a join to do this.
+
+-----
+
+
+SELECT Orders.id, Orders.status, Orders.order_total
+FROM Orders
+JOIN Customers ON (Customers.id = Orders.customer_id)
+WHERE Customers.email = 'phyllis@demizz.edu';
+
+
+==========
+23
+
+-----
+
+Write a query that shows all columns that were attached to order #2725.
+
+-----
+
+
+SELECT * FROM Order_items WHERE order_id = 2725;
+
+
+==========
+24
+
+-----
+
+Write a query that shows the common_name, melon_type, quantity,
+unit_price and total_price for all the melons in order #2725.
+
+-----
+
+
+SELECT Melons.common_name, Melons.melon_type, Order_items.quantity, Order_items.unit_price, Order_items.total_price
+FROM Melons
+JOIN Order_items ON (Order_items.melon_id = Melons.id)
+WHERE Order_items.order_id = 2725;
